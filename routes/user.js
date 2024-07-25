@@ -15,7 +15,7 @@ router.route("/login")
 .get((req,res)=>{res.render("users/login.ejs");})
 .post(saveRedirectUrl,passport.authenticate("local",{failureRedirect: '/login', failureFlash: true}),userController.login);
 
-router.route("/").get(listingController.showListing)
+router.route("/").get(listingController.index)
 
 router.get("/logout",userController.logout);
 
