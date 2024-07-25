@@ -4,6 +4,7 @@ const wrapAsync = require("../utils/wrapAsync");
 const passport = require("passport");
 const { saveRedirectUrl } = require("../middleware.js");
 const userController = require("../controllers/user.js");
+const listingController=require("../controllers/listings.js")
 
 router.route("/signup")
 .get(userController.renderSignupForm)
@@ -14,6 +15,7 @@ router.route("/login")
 .get((req,res)=>{res.render("users/login.ejs");})
 .post(saveRedirectUrl,passport.authenticate("local",{failureRedirect: '/login', failureFlash: true}),userController.login);
 
+router.route("/").get(listingController.showListing)
 
 router.get("/logout",userController.logout);
 
